@@ -11,7 +11,8 @@ maindiv.appendChild(div);
 
 var h1 = document.createElement("h1");
 div.appendChild(h1);
-h1.style = "font-family: Verdana, Geneva, Tahoma, sans-serif;";
+h1.classList = "fontstyle";
+
 h1.innerText = "Crack the CODE";
 
 var div1 = document.createElement("div");
@@ -62,7 +63,9 @@ ul.id = "step";
 ul.style = "list-style:none";
 
 div3.appendChild(ul);
-
+li = document.createElement("li");
+ul.appendChild(li);
+li.id = "chances";
 li = document.createElement("li");
 li.innerHTML = "<b> Results </b>";
 ul.appendChild(li);
@@ -73,22 +76,28 @@ var div4 = document.createElement("div");
 div.appendChild(div4)
 div4.className = "greencolor";
 div4.innerHTML = `Note:<br>
-'Green' Indicates a number is in the correct position.
- <br>'Orange' Indicates a number is part of the code, but not in the right position.
- <br>'Orange' Doesn't consider how many times a number exists in the code.
-<br>'Red' Indicates a number is not part of the code.`;
+<span style="color:white">You will be given only five chances</span><br> 
+<span style="color:green">Green</span> Indicates a number is in the correct position.
+ <br><span style="color:orange">Orange</span> Indicates a number is part of the code, but not in the right position.
+ <br><span style = "color:orange">Orange</span> Doesn't consider how many times a number exists in the code.
+<br><span style = "color:red">Red</span> Indicates a number is not part of the code.`;
 
 l = 0;
 var size = sessionStorage.getItem("1");
-var s = sessionStorage.getItem("br");
+var s = sessionStorage.getItem("chances");
 if (size <= 0) {
   document.getElementById("refresh").innerText = "Please Refresh your  browser!!!!!"
   l = 0;
   size = sessionStorage.setItem("1", 4);
-  
+ 
+}
+if(sessionStorage.length <= 1){
+  s = sessionStorage.setItem("chances",5);
 }
 
 
+s = sessionStorage.getItem("chances");
+s = parseInt(s);
 size = parseInt(size);
 
 
@@ -111,6 +120,7 @@ function getRandom(min, max) {
 }
 
 function processInput(input) {
+  
   document.getElementById("alert").innerHTML = `Please Enter ${size} numbers.`;
   var n = input.length;
   if (document.getElementById("submit").innerHTML === "Reset") {
@@ -134,6 +144,8 @@ function processInput(input) {
   }
   else {
     step_counter++;
+    
+    //document.getElementById("chances").innerHTML = `You have ${--s} chances `;
     checkSubmission(input);
     return;
   }
@@ -234,6 +246,7 @@ function resetGame() {
 }
 
 function cleanAll() {
+  s = sessionStorage.setItem("chances",5);
   secret_code = generateCode();
   step_counter = 0;
   document.getElementById("i_p").value = "";
@@ -242,6 +255,7 @@ function cleanAll() {
   document.getElementById("is_game").innerHTML = "Keep Guessing!!";
   document.getElementById("step").innerHTML = "<li><b>Result</b></li>";
   document.getElementById("submit").innerHTML = "Submit";
+  document.getElementById("chances").innerHTML = "";
 
   return;
 }
