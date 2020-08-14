@@ -3,18 +3,33 @@
 
 <head>
   <style>
-    * {
-      max-width: 500px;
-      margin: auto;
+   
 
-      padding: 10px;
-    }
+body {
+  /* The image used */
+  background-image: url("image.jpg");
 
-    input {
+  /* Full height */
+  height: 100%; 
+  
+
+  /* Center and scale the image nicely */
+ background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vh;
+  height: 100vh;
+  color: white;
+}
+
+.container{
+ margin-left: auto;
+ margin-right: auto;
+}
+    input[type = "number"] {
       width: 300px;
       height: 50px;
       border-radius: 10px;
-      border: 1px;
+      border: 1px solid black;
       text-align: center;
     }
 
@@ -24,19 +39,65 @@
       background-color: lightgreen;
       margin-left: 110px;
       margin-top: 30px;
+      border: 0px;
     }
-
+    button:hover{
+      background-color: darkgreen;
+      color:white;
+    }
     #is_game {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
+    
+    .circles1 {
+  height: 25px;
+  width: 25px;
+  background-color: lightgreen;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
   
-      
+  
+  
+}
+.circles2 {
+  height: 25px;
+  width: 25px;
+  background-color: orange;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+
+  
+}
+.circles3 {
+  text-align: center;
+  height: 25px;
+  width: 25px;
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+  
+}
+  
+ .container{
+   max-width: 1050px;
+   
+ }
+
+ .greencolor{
+   color:red;
+   font-weight: bolder;
+ }
   </style>
 
 </head>
-
-<body>
+ 
+<body background="image.jpg">
 
 <script src="script.js"></script>
 
